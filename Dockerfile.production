@@ -1,0 +1,32 @@
+
+# Dockerfile Production
+
+# as part of a CI/CD pipeline.
+# This Dockerfile is used to build a Docker image and run the fiscally-frontend production in a container.
+
+
+# Use an official Node.js 18 runtime as the base image
+FROM node:18-alpine
+
+RUN apk add bash
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --production
+
+ # Set the NODE_ENV environment variable to "production"
+ENV NODE_ENV=production
+
+# Copy the application code to the working directory
+COPY . .
+
+# Expose the port on which the application will run
+EXPOSE 4010
+
+# Start the application
+CMD [ "npm", "run", "prod" ]
