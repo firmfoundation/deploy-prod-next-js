@@ -15,7 +15,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            fiscally version 1.0.0 {' '}
+            fiscally version 1.0.4 {' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
